@@ -1,9 +1,19 @@
 #!/usr/bin/python
 
+"""
+"""
+
 from selenium import webdriver
 
 class Vegetable:
-    """
+    """A vegetable is the main resource for making a great soup.
+
+    More seriously, a vegtable represent the basic abstraction of a web page
+    element. It provides default access operation over such element namely :
+
+    * Finding a element with unique id.
+    * Finding element(s) from tag name.
+    * Finding element(s) from class name.
     """
 
     def __init__(self, root=None):
@@ -14,7 +24,7 @@ class Vegetable:
         self.root = root
 
     def __getattr__(self, tag):
-        """Tag getter
+        """
 
         :param tag:
         :returns:
@@ -27,7 +37,7 @@ class Vegetable:
         :param id:
         :returns:
         """
-        candidates = self.getCandidates()
+        candidates = self.candidates()
         if isinstance(candidates, list):
             pass # TODO : Perform search over
         seed = candidates.find_element_by_id(id)
@@ -41,8 +51,9 @@ class Vegetable:
         """
         return Class(self, klass)
 
-    def getCandidates(self):
-        """ """
+    def candidates(self):
+        """
+        """
         return self.root
 
     def text(self):
@@ -54,23 +65,25 @@ class Vegetable:
             return "" # TODO : Consider throwing error.
         return self.root.text
 
-class Tag(Vegetable):
-    """
-    TODO : Make it iterable
+class Vegetables(Vegetable):
+    """A soup made of only one vegetable is not that fun.
+
+    A Vegetables instance represents object that MAY be a collection of
+    vegetable with belong to the same category (class name or tag name).
     """
 
-    def __init__(self, root, tag):
+    def __init__(self, root, locator):
         """
         """
         Vegetable.__init__(self, root=root)
-        self.tag = tag
+        self.locator = locator
         self.elements = None
 
     def __iter__(self):
         """ """
         def generator():
             """ """
-            elements = self.getCandidates()
+            elements = self.candidates()
             i = 0
             while i < len(elements):
                 yield Vegetable(elements[i])
@@ -79,12 +92,12 @@ class Tag(Vegetable):
 
     def __len__(self):
         """ """
-        return len(self.getCandidates())
+        return len(self.candidates())
 
-    def getCandidates(self):
+    def candidates(self):
         """ """
         if self.elements is None:
-            parentCandidates = self.root.getCandidates()
+            parentCandidates = self.root.candidates()
             if isinstance(parentCandidates, list):
                 self.elements = [c for candidates in parentCandidates for c in candidates.find_elements_by_tag_name(self.tag)]
             else:
@@ -93,26 +106,16 @@ class Tag(Vegetable):
 
     def text(self):
         """ """
-        candidates = self.getCandidates()
+        candidates = self.candidates()
         if len(candidates) == 1:
             return candidates[0].text
         return None # TODO : Compile or error ?
 
-class Page(Vegetable):
-    """ Top level matcher.
-    """
+class Tag(Vegetables):
+    """ """
 
-    def __init__(self, url, driver=None):
-        """Default constructor.
+    def __init__(self, root, tag):
         """
-        self.url = url
-
-    def __enter__(self):
-        """ """
-        self.root = webdriver.Firefox() # TODO : Use driver parameter.
-        self.root.get(self.url)
-        return self
-
-    def __exit__(self, type, value, traceback):
-        """ """
-        self.root.quit()
+        """
+        Vegetables.__init__(self, root, lambda e: e.find_elements_by_tag_name(tag))
+        self.elements = None

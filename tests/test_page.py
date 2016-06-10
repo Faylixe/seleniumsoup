@@ -2,11 +2,11 @@
 
 import unittest
 
-from seleniumsoup.vegetable import Page
+from seleniumsoup.page import Page
 
 url = 'https://cbracco.github.io/html5-test-page/'
 
-class SeleniumSoupTest(unittest.TestCase):
+class PageTests(unittest.TestCase):
     """ """
 
     def test_tag(self):
@@ -21,3 +21,7 @@ class SeleniumSoupTest(unittest.TestCase):
             menu = page.nav
             items = menu.a
             assert len(items) == 26
+
+    def test_click(self):
+        """ """
+        pass
