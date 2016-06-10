@@ -1,0 +1,16 @@
+general:
+  branches:
+    only:
+      - master
+
+machine:
+  python:
+    version: 3.5.1
+
+dependencies:
+  pre:
+    - pip install selenium
+
+test:
+  override:
+    - python -m unittest discover
