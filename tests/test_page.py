@@ -22,6 +22,11 @@ class PageTests(unittest.TestCase):
             items = menu.a
             assert len(items) == 26
 
+    def test_class(sef):
+        """ """
+        with Page(url) as page:
+            pass
+
     def test_click(self):
         """ """
         pass
