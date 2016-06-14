@@ -13,16 +13,16 @@ class PageFactoryTests(unittest.TestCase):
         """ Test case for page factory usage. """
         factory = PageFactory()
         assert factory.browser == 'firefox'
-        assert factory.available == 0
+        assert len(factory.available) == 0
         with factory:
             with factory.page(url) as first:
                 pass
-            assert factory.available == 1
+                assert len(factory.available) == 1
             with factory.page(url) as first:
                 with factory.page(url) as second:
                     pass
-            assert factory.available == 2
-        assert factory.available == 0
+            assert len(factory.available) == 2
+        assert len(factory.available) == 0
 
     def testParameterizedFactory(self, browser):
         """ Test page retrieval using factory for the given browser type. """
