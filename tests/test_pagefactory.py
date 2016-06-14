@@ -17,7 +17,7 @@ class PageFactoryTests(unittest.TestCase):
         with factory:
             with factory.page(url) as first:
                 pass
-                assert len(factory.available) == 1
+            assert len(factory.available) == 1
             with factory.page(url) as first:
                 with factory.page(url) as second:
                     pass
