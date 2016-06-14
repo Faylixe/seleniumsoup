@@ -16,5 +16,8 @@ setup(
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries'
         'Topic :: Utilities'
+    ],
+    install_requires=[
+        'selenium'
     ]
 )

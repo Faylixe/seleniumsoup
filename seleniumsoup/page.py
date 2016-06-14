@@ -69,7 +69,7 @@ class PageFactory:
             driver = createDriver(self.browser)
             self.available.append(driver)
         instance = self.available.pop(0)
-        self.locked.append(instance)
+        self.used.append(instance)
         return instance
 
     def release(self, driver):
