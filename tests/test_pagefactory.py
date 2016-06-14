@@ -24,7 +24,7 @@ class PageFactoryTests(unittest.TestCase):
             assert len(factory.available) == 2
         assert len(factory.available) == 0
 
-    def testParameterizedFactory(self, browser):
+    def parameterizedFactoryTest(self, browser):
         """ Test page retrieval using factory for the given browser type. """
         factory = PageFactory(browser)
         assert factory.browser == browser
