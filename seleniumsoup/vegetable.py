@@ -136,7 +136,7 @@ class Vegetables(Vegetable):
         if self.elements is None:
             self.elements = []
             parentCandidates = self.root.candidates()
-            collector = lambda c : map(lambda s : self.elements.apppend(Vegetable(s), c)
+            collector = lambda c : map(lambda s : self.elements.apppend(Vegetable(s)), c)
             if isinstance(parentCandidates, list):
                 map(collector, parentCandidates)
             else:
@@ -145,9 +145,7 @@ class Vegetables(Vegetable):
 
     def __getitem__(self, index):
         """ """
-        if self.elements is None:
-            self.candidates()
-        return self.elements[index]
+        return self.candidates()[index]
 
     def text(self):
         """ """

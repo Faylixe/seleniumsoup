@@ -19,11 +19,14 @@ class PageTests(unittest.TestCase):
 
     def test_tagable(self):
         """ Test tagable resources. """
-        with self.factory.page(url) as page:
-            heads = page.h1
+        def test_head(heads):
+            """ Concrete test implementation for a given h1 elements list."""
             assert len(heads) == 2
             assert heads[0].text() == 'this is an identifiable'
             assert heads[1].text() == 'this is a classifiable'
+        with self.factory.page(url) as page:
+            test_head(page.h1)
+            test_head(page.div.h1)
 
 #    def test_identifiable(self):
 #        """ Test identifiable resources. """
