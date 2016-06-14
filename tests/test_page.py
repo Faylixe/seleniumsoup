@@ -2,7 +2,7 @@
 
 import unittest
 
-from seleniumsoup.page import Page
+from seleniumsoup.page import PageFactory
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
