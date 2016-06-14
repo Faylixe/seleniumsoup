@@ -4,7 +4,7 @@ import unittest
 
 from seleniumsoup.page import Page
 
-url = 'https://cbracco.github.io/html5-test-page/'
+url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
 class PageTests(unittest.TestCase):
     """ """
