@@ -136,9 +136,9 @@ class Vegetables(Vegetable):
         if self.elements is None:
             self.elements = []
             parentCandidates = self.root.candidates()
-            collector = lambda candidates : [self.elements.apppend(Vegetable(seed)) for seed in self.locator(candidates)]
+            collector = lambda c : map(lambda s : self.elements.apppend(Vegetable(s), c)
             if isinstance(parentCandidates, list):
-                map(collector, parentCandidates) # TODO : Check map
+                map(collector, parentCandidates)
             else:
                 collector(parentCandidates)
         return self.elements

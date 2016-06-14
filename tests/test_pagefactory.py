@@ -30,7 +30,11 @@ class PageFactoryTests(unittest.TestCase):
         assert factory.browser == browser
         with factory:
             with factory.page(url) as page:
-                pass # TODO : Test basic page content.
+                text = page.text()
+                assert 'link' in text
+                assert 'this is an identifiable' in text
+                assert 'this is a classifiable' in text
+                assert '1 2' in text
 
     def test_firefox(self):
         """ Test page retrieval using firefox based factory. """
