@@ -63,7 +63,7 @@ class PageTests(unittest.TestCase):
 #    def test_fillable(self):
 #        """ Test fillable resources. """
 #        with self.factory.page(url) as page:
-#            text_input = page.input#(type='text')
+#            text_input = page.input(type='text')
 #            pass # TODO : Implement test.
 #
 #    def submitable(self):

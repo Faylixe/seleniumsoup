@@ -116,6 +116,12 @@ class Vegetables(Vegetable):
         self.locator = locator
         self.elements = None
 
+    def __call__(self, **kwargs):
+        """ Attribute filtering. """
+        for attribute in kwargs.keys():
+
+        return
+
     def __iter__(self):
         """ """
         def generator():
