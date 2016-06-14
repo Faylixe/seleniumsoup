@@ -23,3 +23,23 @@ class PageFactoryTests(unittest.TestCase):
                     pass
             assert factory.available == 2
         assert factory.available == 0
+
+    def testParameterizedFactory(self, browser):
+        """ Test page retrieval using factory for the given browser type. """
+        factory = PageFactory(browser)
+        assert factory.browser == browser
+        with factory:
+            with factory.page(url) as page:
+                pass # TODO : Test basic page content.
+
+    def test_firefox(self):
+        """ Test page retrieval using firefox based factory. """
+        testParameterizedFactory('firefox')
+
+    def test_chrome(self):
+        """ Test page retrieval using chrome based factory. """
+        testParameterizedFactory('chrome')
+
+    def test_phantomjs(self):
+        """ Test page retrieval using phantomjs based factory. """
+        testParameterizedFactory('phantomjs')
