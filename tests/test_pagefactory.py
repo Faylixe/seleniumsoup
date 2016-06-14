@@ -34,12 +34,12 @@ class PageFactoryTests(unittest.TestCase):
 
     def test_firefox(self):
         """ Test page retrieval using firefox based factory. """
-        testParameterizedFactory('firefox')
+        self.testParameterizedFactory('firefox')
 
     def test_chrome(self):
         """ Test page retrieval using chrome based factory. """
-        testParameterizedFactory('chrome')
+        self.testParameterizedFactory('chrome')
 
     def test_phantomjs(self):
         """ Test page retrieval using phantomjs based factory. """
-        testParameterizedFactory('phantomjs')
+        self.testParameterizedFactory('phantomjs')
