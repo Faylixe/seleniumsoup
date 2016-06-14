@@ -4,7 +4,7 @@ import unittest
 
 from seleniumsoup.page import PageFactory
 
-url = 'https://cbracco.github.io/html5-test-page/'
+url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
 class PageFactoryTests(unittest.TestCase):
     """ PageFactory class test case. """

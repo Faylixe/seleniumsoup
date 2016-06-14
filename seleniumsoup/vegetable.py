@@ -51,7 +51,7 @@ class Vegetable:
         return None
 
     def __getitem__(self, classname):
-        """Class getter
+        """Attribute getter.
 
         :param classname:
         :returns:
@@ -83,6 +83,21 @@ class Vegetable:
     def submit(self):
         """ """
         pass
+
+class Attribute:
+    """ """
+
+    def __init__(self, element):
+        """ """
+        self.element = element
+
+    def __setitem__(self, name, value):
+        """ """
+        pass
+
+    def __getitem__(self, name):
+        """ """
+        return self.element.get_attribute(name)
 
 class Vegetables(Vegetable):
     """A soup made of only one vegetable is not that fun.
@@ -127,6 +142,12 @@ class Vegetables(Vegetable):
             else:
                 collector(parentCandidates)
         return self.elements
+
+    def __getitem__(self, index):
+        """ """
+        if self.elements is None:
+            self.candidates()
+        return self.elements[index]
 
     def text(self):
         """ """
