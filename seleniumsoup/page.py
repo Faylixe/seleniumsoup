@@ -88,40 +88,17 @@ class PageFactory:
         """
         return Page(url, factory=self)
 
-class DefaultPageFactory:
-    """Simple factory class that acts as a bridge for Page created without
-    factory instance. In such bridge factory, web driver are automatically
-    killed when released.
-    """
-
-    def driver(self):
-        """Creates and returns a firefox driver instance.
-
-        :returns: Created web driver instance.
-        """
-        return createDriver('firefox')
-
-    def release(self, driver):
-        """Releases the given web driver instance.
-
-        :param driver: Web driver instance to release.
-        """
-        driver.quit()
-
-""" Default factory used for stand alone page. """
-defaultFactory = PageFactory()
-
 class Page(Vegetable):
     """Context manager that represents a web document.
 
     Example:
         Page should be used through context manager using with keyword as
-        following :        
+        following :
             with Page('target_url') as page:
                 print(page.text())
     """
 
-    def __init__(self, url, factory=defaultFactory):
+    def __init__(self, url, factory=None):
         """Default constructor.
 
         If factory parameter is missing then the module default factory will be
@@ -136,10 +113,16 @@ class Page(Vegetable):
 
     def __enter__(self):
         """ Context manager API __enter__ implementation. """
-        self.root = self.factory.driver()
+        if self.factory is None:
+            self.root = createDriver('firefox')
+        else:
+            self.root = self.factory.driver()
         self.root.get(self.url)
         return self
 
     def __exit__(self, type, value, traceback):
         """Context manager API exit implementation. """
-        self.factory.release(self.root)
+        if self.factory is None:
+            self.root.quit()
+        else:
+            self.factory.release(self.root)

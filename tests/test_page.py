@@ -43,7 +43,7 @@ class TestPage(Object):
         """ Test identifiable resources. """
         with self.factory.page(url) as page:
             identifiable = page(id='testidentifiable')
-            assert not identifiable is None
+            assert identifiable is not None
             assert identifiable.text() == 'this is an identifiable'
 
 #    def test_attribute(self):
