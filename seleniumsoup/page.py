@@ -111,6 +111,15 @@ class Page(Vegetable):
         self.url = url
         self.factory = factory
 
+    def title(self):
+        """Page title getter.
+
+        :returns: Page title.
+        """
+        if self.root is None:
+            return '' # TODO : Consider returning None
+        return self.root.title
+
     def __enter__(self):
         """ Context manager API __enter__ implementation. """
         if self.factory is None:
