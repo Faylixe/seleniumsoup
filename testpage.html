@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>testtitle</title>
+  </head>
   <body>
-    <a onclick="javascript:this.innerHTML='clicked';">link</a>
+    <a id="testlink" name="linkname" onclick="javascript:this.innerHTML='clicked';">link</a>
     <!-- Test part for identifiable resources. -->
     <div id="testidentifiable">
       <h1>this is an identifiable</h1>
@@ -16,6 +19,8 @@
     <!-- Test part for submittable and fillable resources. -->
     <div id="testform">
       <form>
+          <input type="text" name="testinput" />
+          <input type="submit" />
       </form>
     </div>
   </body>
