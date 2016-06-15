@@ -136,7 +136,6 @@ class Vegetables(Vegetable):
         if self.elements is None:
             self.elements = []
             parentCandidates = self.root.candidates()
-            collector = lambda c :
             if isinstance(parentCandidates, list):
                 #map(lambda s : self.elements.apppend(Vegetable(s)), c)
                 #map(collector, parentCandidates)
