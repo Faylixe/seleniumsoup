@@ -31,32 +31,26 @@ class Vegetable:
         """
         return Tagable(self, tag)
 
-    def __call__(self, id):
-        """Syntaxic sugar for retriving all child element from this vegetable
-        root using call access operator using given parameter as HTML element
-        id filter.
+    def __call__(self, **kwargs):
+        """
 
-        :param id: Identifier of the child element we want to retrieve.
+        :param **kwargs:
         :returns:
         """
-        candidates = self.candidates()
-        if isinstance(candidates, list):
-            for candidate in candidates:
-                result = candidate(id)
-                if result != None:
-                    return result
-        else:
-            seed = candidates.find_element_by_id(id)
-            return Vegetable(seed)
-        return None
+        attributes = kwargs.keys()
+        if 'id' in attributes:
+            pass # TODO : Consider returning vegetable from match element.
+        elif 'class' in attributes:
+            return Classable(self, kwargs['class'])
 
-    def __getitem__(self, classname):
+    def __getitem__(self, attribute):
         """Attribute getter.
 
         :param classname:
         :returns:
         """
-        return Classable(self, classname)
+        pass
+        # TODO : Return attributes for root element.
 
     def candidates(self):
         """
@@ -83,21 +77,6 @@ class Vegetable:
     def submit(self):
         """ """
         pass
-
-class Attribute:
-    """ """
-
-    def __init__(self, element):
-        """ """
-        self.element = element
-
-    def __setitem__(self, name, value):
-        """ """
-        pass
-
-    def __getitem__(self, name):
-        """ """
-        return self.element.get_attribute(name)
 
 class Vegetables(Vegetable):
     """A soup made of only one vegetable is not that fun.

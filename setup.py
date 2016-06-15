@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name = 'seleniumsoup',
-    package = ['seleniumsoup'],
+    packages = ['seleniumsoup'],
     version = '1.0.0',
     description = '',
     author = 'Felix Voituret',

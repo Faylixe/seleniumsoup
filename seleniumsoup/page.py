@@ -114,7 +114,11 @@ defaultFactory = PageFactory()
 class Page(Vegetable):
     """Context manager that represents a web document.
 
-    TODO : Document with usage section.
+    Example:
+        Page should be used through context manager using with keyword as
+        following :        
+            with Page('target_url') as page:
+                print(page.text())
     """
 
     def __init__(self, url, factory=defaultFactory):
