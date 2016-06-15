@@ -9,8 +9,9 @@ class Vegetable:
     More seriously, a vegtable represents the basic abstraction of a web page
     element. It provides default access operation over such element namely :
 
-    * Finding a element with unique id using call operator ().
     * Finding element(s) from tag name using attribute access operator.
+
+    * Finding a element with unique id using call operator ().
     * Finding element(s) from class name using index operator [].
     """
 
@@ -32,50 +33,78 @@ class Vegetable:
         return Tagable(self, tag)
 
     def __call__(self, **kwargs):
-        """
+        """Syntaxic sugar which can either allow to retrieve HTML element using
+        unique attribute property such as id or name (assuming there are unique
+        across the target document). Or performing attributes filtering if this
+        instance is a Vegetables.
 
-        :param **kwargs:
-        :returns:
+        Such filtering is efficient when the set of parent elements is not too
+        big.
+
+        :param **kwargs: HTML (attribute, value) mapping.
+        :returns: Matched element(s).
         """
         attributes = kwargs.keys()
-        if 'id' in attributes:
-            return self.identifiable(kwargs['id'])
+        if len(attributes) == 1:
+            if attributes[0] == 'id':
+                id = kwargs['id']
+                return self.locate(lambda e : e.find_element_by_id(id))
+            elif attributes[0] == 'name':
+                name = kwargs['name']
+                return self.locate(lambda e: e.find_elements_by_name(name))
+        elif isinstance(self, Vegetables):
+            # TODO : Implements multi attribute filtering.
+            pass
+        # TODO : Consider raise error ?
         return None
 
-    def identifiable(self, id):
-        """
+    def locate(self, locator):
+        """Locates and collects child HTML element(s) using the given locator.
 
-        :param id:
-        :returns:
+        TODO : Explain algorithm ?
+
+        :param locator: Function that retrieves web element(s) from a given one.
+        :returns: Located element using the given locator from this root.
         """
         elements = self.candidates()
         if isinstance(elements, list):
             for element in elements:
-                seed = element.find_element_by_id(id)
+                seed = locator(element)
                 if seed is not None:
-                    return Vegetable(seed)
+                    return CookVegetable(seed)
         else:
-            seed = elements.find_element_by_id(id)
-            return Vegetable(seed)
-
-    def __getitem__(self, attribute):
-        """Attribute getter.
-
-        :param classname:
-        :returns:
-        """
-        pass
-        # TODO : Return attributes for root element.
+            seed = locator(elements)
+            return CookVegetable(seed)
 
     def candidates(self):
-        """
+        """ To document
         """
         return self.root
 
-    def text(self):
-        """
+class CookVegetable(Vegetable):
+    """ To document.
+    """
 
-        :returns:
+    def __init__(self, root):
+        """Default constructor.
+
+        :param root:
+        """
+        Vegetable.__init__(self, root)
+
+    def __getitem__(self, attribute):
+        """HTML Element attribute getter.
+
+        :param attribute: Name of the attribute to retrieve.
+        :returns: Attribute value if any.
+        """
+        # TODO : Ensure get_attribute return type if not found.
+        return self.root.get_attribute(attribute)
+
+    def text(self):
+        """HTML Element text getter.
+
+        :returns: Text of this element.
         """
         if self.root is None:
             return "" # TODO : Consider throwing error.
@@ -92,6 +121,7 @@ class Vegetable:
     def submit(self):
         """ """
         pass
+
 
 class Vegetables(Vegetable):
     """A soup made of only one vegetable is not that fun.

@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+"""Unit test for Page and PageFactory class."""
+
 from nose.tools import nottest
 
 from seleniumsoup.page import PageFactory

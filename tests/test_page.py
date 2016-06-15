@@ -1,21 +1,37 @@
 #!/usr/bin/python
 
+""" """
+
 import unittest
 
 from seleniumsoup.page import Page
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-#def test_tagable():
-#    """ Test tagable resources. """
-#    def test_head(heads):
-#        """ Concrete test implementation for a given h1 elements list."""
-#        assert len(heads) == 2
-#        assert heads[0].text() == 'this is an identifiable'
-#        assert heads[1].text() == 'this is a classifiable'
-#    with Page(url) as page:
-#        test_head(page.h1)
-#        test_head(page.div.h1)
+def test_tagable():
+    """ Test tagable resources. """
+    def test_head(heads):
+        """ Concrete test implementation for a given h1 elements list."""
+        assert len(heads) == 2
+        assert heads[0].text() == 'this is an identifiable'
+        assert heads[1].text() == 'this is a classifiable'
+    with Page(url) as page:
+        test_head(page.h1)
+        test_head(page.div.h1)
+
+def test_identifiable():
+    """ Test identifiable resources. """
+    with Page(url) as page:
+        identifiable = page(id='testidentifiable')
+        assert identifiable is not None
+        assert identifiable.text() == 'this is an identifiable'
+
+def test_nammable():
+    """ Test nammable resources. """
+    with Page(url) as page:
+        nammable = page(name='linkname')
+        assert nammable is not None
+        assert nammable.text() == 'link'
 
 #   def test_classifiable(self):
 #        """ Test classifiable resources. """
@@ -28,12 +44,6 @@ url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 #            assert classifiables[0].text() == '1'
 #            assert classifiables[1].text() == '2'
 
-def test_identifiable():
-    """ Test identifiable resources. """
-    with Page(url)  as page:
-        identifiable = page(id='testidentifiable')
-        assert identifiable is not None
-        assert identifiable.text() == 'this is an identifiable'
 
 #    def test_attribute(self):
 #        """ Test attribute access """

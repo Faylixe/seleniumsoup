@@ -115,9 +115,10 @@ class Page(Vegetable):
         """Page title getter.
 
         :returns: Page title.
+        TODO : Document exception thrown.
         """
         if self.root is None:
-            return '' # TODO : Consider returning None
+            raise TypeError('Page root element is None')
         return self.root.title
 
     def __enter__(self):
