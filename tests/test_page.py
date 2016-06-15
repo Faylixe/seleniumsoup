@@ -6,16 +6,16 @@ from seleniumsoup.page import Page
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-def test_tagable():
-    """ Test tagable resources. """
-    def test_head(heads):
-        """ Concrete test implementation for a given h1 elements list."""
-        assert len(heads) == 2
-        assert heads[0].text() == 'this is an identifiable'
-        assert heads[1].text() == 'this is a classifiable'
-    with Page(url) as page:
-        test_head(page.h1)
-        test_head(page.div.h1)
+#def test_tagable():
+#    """ Test tagable resources. """
+#    def test_head(heads):
+#        """ Concrete test implementation for a given h1 elements list."""
+#        assert len(heads) == 2
+#        assert heads[0].text() == 'this is an identifiable'
+#        assert heads[1].text() == 'this is a classifiable'
+#    with Page(url) as page:
+#        test_head(page.h1)
+#        test_head(page.div.h1)
 
 #   def test_classifiable(self):
 #        """ Test classifiable resources. """
@@ -44,13 +44,13 @@ def test_identifiable():
 #            assert anchor['id'] == 'testlink'
 #            assert anchor['name'] == 'linkname'
 
-def test_iterable():
-    """ Test element iterator """
-    with Page(url)  as page:
-        i = 1
-        for span in page.span:
-            assert span.text() == str(i)
-            i += 1
+#def test_iterable():
+#    """ Test element iterator """
+#    with Page(url)  as page:
+#        i = 1
+#        for span in page.span:
+#            assert span.text() == str(i)
+#            i += 1
 
 #    def test_clickable(self):
 #        """ Test clickable resources. """
