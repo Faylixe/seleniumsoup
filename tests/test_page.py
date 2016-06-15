@@ -6,16 +6,20 @@ from seleniumsoup.page import PageFactory
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-class TestPage:
+class TestPage(object):
     """ """
 
-    def setup_class(self):
-        """ Initialization method. Setups the page factory. """
-        self.factory = PageFactory()
+    factory = None
 
-    def teardown_class(self):
+    @classmethod
+    def setup_class(cls):
+        """ Initialization method. Setups the page factory. """
+        factory = PageFactory()
+
+    @classmethod
+    def teardown_class(cls):
         """ Terminaison method. Releases the page factory. """
-        self.factory.quit()
+        factory.quit()
 
     def test_tagable(self):
         """ Test tagable resources. """
