@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+from nose.tools import nottest
+
 from seleniumsoup.page import PageFactory
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
@@ -19,17 +21,14 @@ def test_factory():
         assert len(factory.available) == 2
     assert len(factory.available) == 0
 
+@nottest
 def parametrized_factory_test(browser):
     """ Test page retrieval using factory for the given browser type. """
     factory = PageFactory(browser)
     assert factory.browser == browser
     with factory:
         with factory.page(url) as page:
-            text = page.text()
-            assert 'link' in text
-            assert 'this is an identifiable' in text
-            assert 'this is a classifiable' in text
-            assert '1 2' in text
+            assert page.title == 'testtitle'
 
 def test_firefox():
     """ Test page retrieval using firefox based factory. """
