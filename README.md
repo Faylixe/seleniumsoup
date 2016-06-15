@@ -1,7 +1,8 @@
 # Seleniumsoup
 
-[![CircleCI](https://circleci.com/gh/Faylixe/seleniumsoup.svg?style=svg)](https://circleci.com/gh/Faylixe/seleniumsoup) [![Code Issues](https://www.quantifiedcode.com/api/v1/project/3d5fa5f799bd47eb80587b1d084ed695/badge.svg)](https://www.quantifiedcode.com/app/project/3d5fa5f799bd47eb80587b1d084ed695) [![codecov](https://codecov.io/gh/Faylixe/seleniumsoup/branch/master/graph/badge.svg)](https://codecov.io/gh/Faylixe/seleniumsoup)
+[![Code Issues](https://www.quantifiedcode.com/api/v1/project/3d5fa5f799bd47eb80587b1d084ed695/badge.svg)](https://www.quantifiedcode.com/app/project/3d5fa5f799bd47eb80587b1d084ed695) [![codecov](https://codecov.io/gh/Faylixe/seleniumsoup/branch/master/graph/badge.svg)](https://codecov.io/gh/Faylixe/seleniumsoup)
 
+[![CircleCI](https://circleci.com/gh/Faylixe/seleniumsoup.svg?style=svg)](https://circleci.com/gh/Faylixe/seleniumsoup)
 
 * [Installation](#installation)
 * [Usage](#usage)

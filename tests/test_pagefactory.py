@@ -9,7 +9,8 @@ url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 class PageFactoryTests(unittest.TestCase):
     """ PageFactory class test case. """
 
-    def test_factory(self):
+    @static_method
+    def test_factory():
         """ Test case for page factory usage. """
         factory = PageFactory()
         assert factory.browser == 'firefox'
@@ -24,7 +25,8 @@ class PageFactoryTests(unittest.TestCase):
             assert len(factory.available) == 2
         assert len(factory.available) == 0
 
-    def parameterizedFactoryTest(self, browser):
+    @static_method
+    def parametrized_factory_test(browser):
         """ Test page retrieval using factory for the given browser type. """
         factory = PageFactory(browser)
         assert factory.browser == browser
@@ -36,14 +38,17 @@ class PageFactoryTests(unittest.TestCase):
                 assert 'this is a classifiable' in text
                 assert '1 2' in text
 
-    def test_firefox(self):
+    @static_method
+    def test_firefox():
         """ Test page retrieval using firefox based factory. """
-        self.parameterizedFactoryTest('firefox')
+        parametrized_factory_test('firefox')
 
-    def test_chrome(self):
+    @static_method
+    def test_chrome():
         """ Test page retrieval using chrome based factory. """
-        self.parameterizedFactoryTest('chrome')
+        parametrized_factory_test('chrome')
 
-    def test_phantomjs(self):
+    @static_method
+    def test_phantomjs():
         """ Test page retrieval using phantomjs based factory. """
-        self.parameterizedFactoryTest('phantomjs')
+        parametrized_factory_test('phantomjs')
