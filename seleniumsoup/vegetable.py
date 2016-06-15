@@ -98,7 +98,7 @@ class Vegetables(Vegetable):
     def __call__(self, **kwargs):
         """ Attribute filtering. """
         for attribute in kwargs.keys():
-
+            pass
         return
 
     def __iter__(self):
