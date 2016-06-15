@@ -28,13 +28,13 @@ class TestPage(object):
             assert len(heads) == 2
             assert heads[0].text() == 'this is an identifiable'
             assert heads[1].text() == 'this is a classifiable'
-        with self.factory.page(url) as page:
+        with factory.page(url) as page:
             test_head(page.h1)
             test_head(page.div.h1)
 
 #    def test_classifiable(self):
 #        """ Test classifiable resources. """
-#        with self.factory.page(url) as page:
+#        with factory.page(url) as page:
 #            classifiable = page(class='testclassifiable')
 #            assert len(classifiable) == 1
 #            assert 'this is a classifiable' in classifiable[0].text()
@@ -45,14 +45,14 @@ class TestPage(object):
 
     def test_identifiable(self):
         """ Test identifiable resources. """
-        with self.factory.page(url) as page:
+        with factory.page(url) as page:
             identifiable = page(id='testidentifiable')
             assert identifiable is not None
             assert identifiable.text() == 'this is an identifiable'
 
 #    def test_attribute(self):
 #        """ Test attribute access """
-#        with self.factory.page(url) as page:
+#        with factory.page(url) as page:
 #            anchors = page.a
 #            assert len(anchors) == 1
 #            anchor = anchors[0]
@@ -61,7 +61,7 @@ class TestPage(object):
 
     def test_iterable(self):
         """ Test element iterator """
-        with self.factory.page(url) as page:
+        with factory.page(url) as page:
             i = 1
             for span in page.span:
                 assert span.text() == str(i)
@@ -69,7 +69,7 @@ class TestPage(object):
 
 #    def test_clickable(self):
 #        """ Test clickable resources. """
-#        with self.factory.page(url) as page:
+#        with factory.page(url) as page:
 #            anchors = page.a
 #            assert len(anchors) == 1
 #            assert anchors[0].text() == 'link'
@@ -78,7 +78,7 @@ class TestPage(object):
 
 #    def test_fillable(self):
 #        """ Test fillable resources. """
-#        with self.factory.page(url) as page:
+#        with factory.page(url) as page:
 #            inputs = page.input(type='text')
 #            assert len(inputs) == 1
 #            inputs[0].fill('foo')
@@ -86,6 +86,6 @@ class TestPage(object):
 
 #    def submitable(self):
 #        """ Test submitable resources. """
-#        with self.factory.page(url) as page:
+#        with factory.page(url) as page:
 #            form = page.form # TODO : Specialize data.
 #            form.submit()
