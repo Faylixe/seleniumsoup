@@ -14,3 +14,5 @@ dependencies:
 test:
   override:
     - python -m unittest discover
+  post:
+    - bash <(curl -s https://codecov.io/bash)
