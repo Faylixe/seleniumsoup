@@ -2,37 +2,22 @@
 
 import unittest
 
-from seleniumsoup.page import PageFactory
+from seleniumsoup.page import Page
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-class TestPage(object):
-    """ """
+def test_tagable():
+    """ Test tagable resources. """
+    def test_head(heads):
+        """ Concrete test implementation for a given h1 elements list."""
+        assert len(heads) == 2
+        assert heads[0].text() == 'this is an identifiable'
+        assert heads[1].text() == 'this is a classifiable'
+    with Page(url) as page:
+        test_head(page.h1)
+        test_head(page.div.h1)
 
-    factory = None
-
-    @classmethod
-    def setup_class(cls):
-        """ Initialization method. Setups the page factory. """
-        factory = PageFactory()
-
-    @classmethod
-    def teardown_class(cls):
-        """ Terminaison method. Releases the page factory. """
-        factory.quit()
-
-    def test_tagable(self):
-        """ Test tagable resources. """
-        def test_head(heads):
-            """ Concrete test implementation for a given h1 elements list."""
-            assert len(heads) == 2
-            assert heads[0].text() == 'this is an identifiable'
-            assert heads[1].text() == 'this is a classifiable'
-        with factory.page(url) as page:
-            test_head(page.h1)
-            test_head(page.div.h1)
-
-#    def test_classifiable(self):
+#   def test_classifiable(self):
 #        """ Test classifiable resources. """
 #        with factory.page(url) as page:
 #            classifiable = page(class='testclassifiable')
@@ -43,12 +28,12 @@ class TestPage(object):
 #            assert classifiables[0].text() == '1'
 #            assert classifiables[1].text() == '2'
 
-    def test_identifiable(self):
-        """ Test identifiable resources. """
-        with factory.page(url) as page:
-            identifiable = page(id='testidentifiable')
-            assert identifiable is not None
-            assert identifiable.text() == 'this is an identifiable'
+def test_identifiable():
+    """ Test identifiable resources. """
+    with Page(url)  as page:
+        identifiable = page(id='testidentifiable')
+        assert identifiable is not None
+        assert identifiable.text() == 'this is an identifiable'
 
 #    def test_attribute(self):
 #        """ Test attribute access """
@@ -59,13 +44,13 @@ class TestPage(object):
 #            assert anchor['id'] == 'testlink'
 #            assert anchor['name'] == 'linkname'
 
-    def test_iterable(self):
-        """ Test element iterator """
-        with factory.page(url) as page:
-            i = 1
-            for span in page.span:
-                assert span.text() == str(i)
-                i += 1
+def test_iterable():
+    """ Test element iterator """
+    with Page(url)  as page:
+        i = 1
+        for span in page.span:
+            assert span.text() == str(i)
+            i += 1
 
 #    def test_clickable(self):
 #        """ Test clickable resources. """
