@@ -4,7 +4,7 @@ from seleniumsoup.page import PageFactory
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-class TestPageFactory(Object):
+class TestPageFactory:
     """ PageFactory class test case. """
 
     @staticmethod
