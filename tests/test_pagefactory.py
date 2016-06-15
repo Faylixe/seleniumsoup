@@ -1,12 +1,10 @@
 #!/usr/bin/python
 
-import unittest
-
 from seleniumsoup.page import PageFactory
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-class PageFactoryTests(unittest.TestCase):
+class TestPageFactory(Object):
     """ PageFactory class test case. """
 
     @static_method
