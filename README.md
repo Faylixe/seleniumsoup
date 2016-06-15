@@ -3,13 +3,13 @@
 [![Build Status](https://travis-ci.org/Faylixe/seleniumsoup.svg?branch=master)](https://travis-ci.org/Faylixe/seleniumsoup) [![codecov](https://codecov.io/gh/Faylixe/seleniumsoup/branch/master/graph/badge.svg)](https://codecov.io/gh/Faylixe/seleniumsoup) [![Code Issues](https://www.quantifiedcode.com/api/v1/project/3d5fa5f799bd47eb80587b1d084ed695/badge.svg)](https://www.quantifiedcode.com/app/project/3d5fa5f799bd47eb80587b1d084ed695)
 
 
+Selenium soup is a wrapper for selenium framework which allows to manipulate webpage as Python object.
+
 * [Installation](#installation)
 * [Usage](#usage)
   * [Simple page Parsing](#simple-page-parsing)
   * [Accessing elements](#accesing-elements)
   * [Page factory and browser caching](#page-factory-and-browser-caching)
-
-Selenium soup is a wrapper for selenium framework which allows to manipulate webpage as Python object.
 
 ## Installation
 

@@ -39,9 +39,24 @@ class Vegetable:
         """
         attributes = kwargs.keys()
         if 'id' in attributes:
-            pass # TODO : Consider returning vegetable from match element.
-        elif 'class' in attributes:
-            return Classable(self, kwargs['class'])
+            return self.identifiable(kwargs['id'])
+        return None
+
+    def identifiable(self, id):
+        """
+
+        :param id:
+        :returns:
+        """
+        elements = self.candidates()
+        if isinstance(elements, list):
+            for element in elements:
+                seed = element.find_element_by_id(id)
+                if seed is not None:
+                    return Vegetable(seed)
+        else:
+            seed = elements.find_element_by_id(id)
+            return Vegetable(seed)
 
     def __getitem__(self, attribute):
         """Attribute getter.
