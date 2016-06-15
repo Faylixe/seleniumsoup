@@ -28,6 +28,7 @@ def parametrized_factory_test(browser):
     assert factory.browser == browser
     with factory:
         with factory.page(url) as page:
+            print(page.title)
             assert page.title == 'testtitle'
 
 def test_firefox():

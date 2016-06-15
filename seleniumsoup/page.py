@@ -55,8 +55,8 @@ class PageFactory:
             driver.quit()
         for driver in self.used:
             driver.quit()
-        self.available.clear()
-        self.used.clear()
+        del self.available[:]
+        del self.used[:]
 
     def driver(self):
         """Retrieves a web driver instance from the cache.
