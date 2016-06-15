@@ -6,7 +6,7 @@ from seleniumsoup.page import PageFactory
 
 url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 
-class TestPage(Object):
+class TestPage:
     """ """
 
     def setup_class(self):
