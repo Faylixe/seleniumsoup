@@ -9,17 +9,14 @@ url = 'http://faylixe.fr/seleniumsoup/testpage.html'
 class TestPage(Object):
     """ """
 
-    @classmethod
     def setup_class(self):
         """ Initialization method. Setups the page factory. """
         self.factory = PageFactory()
 
-    @classmethod
     def teardown_class(self):
         """ Terminaison method. Releases the page factory. """
         self.factory.quit()
 
-    @classmethod
     def test_tagable(self):
         """ Test tagable resources. """
         def test_head(heads):
@@ -31,7 +28,6 @@ class TestPage(Object):
             test_head(page.h1)
             test_head(page.div.h1)
 
-#    @classmethod
 #    def test_classifiable(self):
 #        """ Test classifiable resources. """
 #        with self.factory.page(url) as page:
@@ -43,7 +39,6 @@ class TestPage(Object):
 #            assert classifiables[0].text() == '1'
 #            assert classifiables[1].text() == '2'
 
-    @classmethod
     def test_identifiable(self):
         """ Test identifiable resources. """
         with self.factory.page(url) as page:
@@ -51,7 +46,6 @@ class TestPage(Object):
             assert not identifiable is None
             assert identifiable.text() == 'this is an identifiable'
 
-#    @classmethod
 #    def test_attribute(self):
 #        """ Test attribute access """
 #        with self.factory.page(url) as page:
@@ -61,7 +55,6 @@ class TestPage(Object):
 #            assert anchor['id'] == 'testlink'
 #            assert anchor['name'] == 'linkname'
 
-    @classmethod
     def test_iterable(self):
         """ Test element iterator """
         with self.factory.page(url) as page:
@@ -70,7 +63,6 @@ class TestPage(Object):
                 assert span.text() == str(i)
                 i += 1
 
-#    @classmethod
 #    def test_clickable(self):
 #        """ Test clickable resources. """
 #        with self.factory.page(url) as page:
@@ -80,7 +72,6 @@ class TestPage(Object):
 #            anchors[0].click()
 #            assert anchors[0].text() == 'clicked'
 
-#    @classmethod
 #    def test_fillable(self):
 #        """ Test fillable resources. """
 #        with self.factory.page(url) as page:
