@@ -1,6 +1,6 @@
 # Seleniumsoup
 
-[![CircleCI](https://circleci.com/gh/Faylixe/seleniumsoup.svg?style=svg)](https://circleci.com/gh/Faylixe/seleniumsoup) [![Code Health](https://landscape.io/github/Faylixe/seleniumsoup/master/landscape.svg?style=plastic)](https://landscape.io/github/Faylixe/seleniumsoup/master)
+[![CircleCI](https://circleci.com/gh/Faylixe/seleniumsoup.svg?style=svg)](https://circleci.com/gh/Faylixe/seleniumsoup) [![Code Issues](https://www.quantifiedcode.com/api/v1/project/3d5fa5f799bd47eb80587b1d084ed695/badge.svg)](https://www.quantifiedcode.com/app/project/3d5fa5f799bd47eb80587b1d084ed695)
 
 * [Installation](#installation)
 * [Usage](#usage)
