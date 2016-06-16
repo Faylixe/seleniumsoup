@@ -164,16 +164,7 @@ class Vegetables(Vegetable):
     def candidates(self):
         """ """
         if self.elements is None:
-            self.elements = []
-            parentCandidates = self.root.candidates()
-            if isinstance(parentCandidates, list):
-                #map(lambda s : self.elements.apppend(Vegetable(s)), c)
-                #map(collector, parentCandidates)
-                pass
-            else:
-                for seed in parentCandidates:
-                    self.elements.append(Vegetable())
-                pass
+            self.elements = self.locate(self.locator)
         return self.elements
 
     def __getitem__(self, index):
