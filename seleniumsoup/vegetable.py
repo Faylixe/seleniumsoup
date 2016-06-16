@@ -46,10 +46,10 @@ class Vegetable:
         """
         attributes = kwargs.keys()
         if len(attributes) == 1:
-            if attributes[0] == 'id':
+            if 'id' in attributes:
                 id = kwargs['id']
                 return self.locate(lambda e : e.find_element_by_id(id))
-            elif attributes[0] == 'name':
+            elif 'name' in attributes[0]:
                 name = kwargs['name']
                 return self.locate(lambda e: e.find_elements_by_name(name))
         elif isinstance(self, Vegetables):
