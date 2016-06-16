@@ -51,7 +51,7 @@ class Vegetable:
                 return self.locate(lambda e : e.find_element_by_id(id))
             elif 'name' in attributes:
                 name = kwargs['name']
-                return self.locate(lambda e: e.find_elements_by_name(name))
+                return self.locate(lambda e: e.find_element_by_name(name))
         elif isinstance(self, Vegetables):
             # TODO : Implements multi attribute filtering.
             pass
