@@ -164,7 +164,7 @@ class Vegetables(Vegetable):
     def candidates(self):
         """ """
         if self.elements is None:
-            self.elements = self.locate(self.locator)
+            self.elements = self.root.locate(self.locator)
         return self.elements
 
     def __getitem__(self, index):
